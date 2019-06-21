@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+ZSH_CONFIG_FILE=${HOME}/.zshrc
+THEME_NAME=lambda-mod
+THEME_LOCATION=${HOME}/.oh-my-zsh/themes/lambda-mod.zsh-theme
+THEME_URL=https://raw.githubusercontent.com/thermsdorff/lambda-mod-zsh-theme/master/lambda-mod.zsh-theme
+
+# Install zsh and dependency
+# ------------------------------------------------------------------------------------------
+sudo apt update && sudo apt install \
+    zsh \
+    -y
+
+# Set zsh as default shell
+chsh -s $(which zsh)
+
+# Install oh-my-zsh
+# ------------------------------------------------------------------------------------------
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh) --unattended"
+
+# Add Lambda theme
+# ------------------------------------------------------------------------------------------
+# Fetch Theme
+curl -# -o ${THEME_LOCATION} ${THEME_URL}
+# Add specific theme config to zsh config
+cp ${ZSH_CONFIG_FILE} ${ZSH_CONFIG_FILE}.bak
+echo "export LAMBDA_MOD_N_DIR_LEVELS=10" > ${ZSH_CONFIG_FILE}
+cat ${ZSH_CONFIG_FILE}.bak >> ${ZSH_CONFIG_FILE}
+# Set theme into zsh config
+sed -i '/^ZSH_THEME=/c\ZSH_THEME='${THEME_NAME} ${ZSH_CONFIG_FILE}

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+PATH_LINE="PATH=\"\$PATH:/snap/bin\""
+PROFILE_FILE=${HOME}/.profile
+
+# Add path to profile
+# ------------------------------------------------------------------------------------------
+echo ${PATH_LINE} >> ${PROFILE_FILE}

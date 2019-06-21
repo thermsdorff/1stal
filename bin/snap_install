@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function install {
+    sudo snap install --classic $1
+}
+
+install phpstorm
+install webstorm
+install datagrip
+install slack
+install postman
+install spotify

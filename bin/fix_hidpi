@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+CONFIG_LINE="export QT_DEVICE_PIXEL_RATIO=2"
+PROFILE_FILE=${HOME}/.profile
+
+# Add config to profile
+# ------------------------------------------------------------------------------------------
+echo ${CONFIG_LINE} >> ${PROFILE_FILE}
